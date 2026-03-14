@@ -433,6 +433,7 @@ nav a:hover::after {
     font-size: 12px;
 }
 
+
 @media (max-width: 768px) {
 
 .hero {
@@ -447,7 +448,7 @@ nav a:hover::after {
 .hero-name {
     align-items: center;
     text-align: center;
-    font-size: 42px;
+    font-size: 36px;
 }
 
 .profile-photo {
@@ -456,19 +457,45 @@ nav a:hover::after {
 }
 
 .subtitle {
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .hero-intro {
     font-size: 15px;
 }
 
-nav {
+/* Navigation */
+
+.nav-container nav {
+    padding: 10px 18px;
+    gap: 18px;
+}
+
+nav a {
     font-size: 14px;
+}
+
+/* About section */
+
+.about-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+/* Projects */
+
+.projects {
+    grid-template-columns: 1fr;
 }
 
 .project-card img {
     height: 160px;
+}
+
+/* Skills */
+
+.skills {
+    grid-template-columns: 1fr;
 }
 
 }
