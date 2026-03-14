@@ -29,18 +29,29 @@ hr {
 }
 
 nav {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    z-index: 1000;
+}
+
+nav {
     margin-bottom: 30px;
     font-weight: bold;
 }
 
 nav a {
+    margin: 0 10px;
     text-decoration: none;
-    color: #0077cc;
-    margin-right: 10px;
+    color: #333;
+    font-weight: 500;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: #0077cc;
 }
 
 .hero {
@@ -53,10 +64,12 @@ nav a:hover {
     margin-bottom: 10px;
 }
 
+
 .subtitle {
     font-size: 20px;
     color: #555;
 }
+
 
 .intro {
     max-width: 700px;
