@@ -366,6 +366,34 @@ nav a:hover::after {
 }
 
 
+.about-container {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+}
+
+.about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.about-box {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.08);
+}
+
+.about-box h4 {
+    margin: 0 0 6px 0;
+}
+
 @media (max-width: 768px) {
 
 .hero {
