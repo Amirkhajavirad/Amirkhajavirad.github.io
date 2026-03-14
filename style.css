@@ -95,3 +95,22 @@ nav a:hover {
     border-radius: 6px;
     margin-bottom: 10px;
 }
+
+.project-buttons {
+    margin-top: 15px;
+}
+
+.project-buttons a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 8px 14px;
+    background-color: #0077cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.project-buttons a:hover {
+    background-color: #005fa3;
+}
