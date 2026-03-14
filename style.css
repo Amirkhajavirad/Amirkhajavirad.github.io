@@ -21,12 +21,15 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 40px;
-    background-color: var(--background);
-    color: var(--text-main);
+font-family: 'Inter', sans-serif;
+margin: 0;
+padding: 40px;
+background-color: var(--background);
+color: var(--text-main);
+animation:fadeIn 0.6s ease;
 }
+
+
 
 p {
     line-height: 1.7;
@@ -61,10 +64,12 @@ h2 {
     padding-bottom: 6px;
 }
 
-.about-text {
-    max-width: 800px;
-    margin: auto;
-    line-height: 1.6;
+.about-text{
+    max-width:680px;
+    margin:auto;
+    line-height:1.7;
+    font-size:16px;
+    color:var(--text-secondary);
 }
 
 ul {
@@ -125,13 +130,17 @@ nav a:hover::after {
 }
 
 
-.hero {
-    text-align: center;
-    padding: 110px 20px;
-    margin-top: 40px;
-    background: linear-gradient(135deg, #eef3f8 0%, #ffffff 60%);
-    border-radius: 14px;
-    position: relative;
+.hero{
+text-align:center;
+padding:110px 20px;
+margin-top:40px;
+border-radius:14px;
+position:relative;
+
+background:
+radial-gradient(circle at 20% 20%, rgba(0,119,204,0.06), transparent 40%),
+radial-gradient(circle at 80% 30%, rgba(0,119,204,0.05), transparent 40%),
+linear-gradient(135deg,#eef3f8 0%,#ffffff 60%);
 }
 
 .hero-top {
@@ -208,12 +217,14 @@ nav a:hover::after {
     margin-top: 10px;
     border-radius: 8px;
     box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0px 12px 24px rgba(0,0,0,0.18);
+
+
+.project-card:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 40px rgba(0,0,0,0.15);
 }
 
 .project-card h3 {
@@ -528,6 +539,27 @@ align-items:center;
 .footer-right a:hover{
 color:var(--primary);
 transform:translateY(-2px);
+}
+
+.github-chart{
+text-align:center;
+margin-top:20px;
+}
+
+.github-chart img{
+max-width:100%;
+border-radius:8px;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 @media (max-width: 768px) {
