@@ -27,3 +27,18 @@ ul {
 hr {
     margin: 40px 0;
 }
+
+nav {
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0077cc;
+    margin-right: 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
