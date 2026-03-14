@@ -203,6 +203,16 @@ nav a:hover {
     text-decoration: underline;
 }
 
+.footer-links i {
+    font-size: 22px;
+    margin: 0 12px;
+    color: #333;
+}
+
+.footer-links i:hover {
+    color: #0077cc;
+}
+
 .copyright {
     font-size: 14px;
     color: #777;
