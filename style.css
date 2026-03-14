@@ -385,13 +385,26 @@ nav a:hover::after {
 
 .about-box {
     background: white;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0px 3px 8px rgba(0,0,0,0.08);
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
 }
 
 .about-box h4 {
     margin: 0 0 6px 0;
+}
+
+.about-tags {
+    margin-top: 8px;
+}
+
+.about-tags span {
+    display: inline-block;
+    background: #eef3f8;
+    padding: 5px 10px;
+    margin: 4px 6px 4px 0;
+    border-radius: 16px;
+    font-size: 12px;
 }
 
 @media (max-width: 768px) {
