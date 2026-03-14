@@ -171,3 +171,31 @@ nav a:hover {
 .skill-card h3 {
     margin-top: 0;
 }
+
+.footer {
+    margin-top: 60px;
+    padding: 30px;
+    background: white;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.footer-links {
+    margin: 10px 0;
+}
+
+.footer-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #0077cc;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    font-size: 14px;
+    color: #777;
+}
