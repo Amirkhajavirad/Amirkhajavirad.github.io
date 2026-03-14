@@ -114,3 +114,18 @@ nav a:hover {
 .project-buttons a:hover {
     background-color: #005fa3;
 }
+
+.resume-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 18px;
+    background-color: #0077cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.resume-button:hover {
+    background-color: #005fa3;
+}
