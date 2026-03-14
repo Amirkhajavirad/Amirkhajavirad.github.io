@@ -263,7 +263,7 @@ nav a:hover {
     color: #333;
 }
 
-.footer-links i:hover {
+.footer-links a:hover {
     color: #0077cc;
 }
 
@@ -300,6 +300,22 @@ nav a:hover {
     margin-right: 6px;
 }
 
+.hero-social {
+    margin-top: 18px;
+}
+
+.hero-social a {
+    font-size: 24px;
+    margin: 0 12px;
+    color: #444;
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.hero-social a:hover {
+    color: #0077cc;
+    transform: translateY(-2px);
+}
 
 @media (max-width: 768px) {
 
