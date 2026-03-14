@@ -1,3 +1,21 @@
+:root {
+
+--primary: #0077cc;
+--primary-hover: #005fa3;
+
+--background: #f4f6f8;
+--card: #ffffff;
+
+--text-main: #333333;
+--text-secondary: #555555;
+
+--border: #e5e7eb;
+
+--tag-bg: #eef3f8;
+
+
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -6,8 +24,8 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 40px;
-    background-color: #f4f6f8;
-    color: #333;
+    background-color: var(--background);
+    color: var(--text-main);
 }
 
 p {
@@ -39,7 +57,7 @@ h2 {
 h2 {
     margin-top: 80px;
     margin-bottom: 20px;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid var(--border);
     padding-bottom: 6px;
 }
 
@@ -60,7 +78,7 @@ hr {
 nav {
     position: sticky;
     top: 0;
-    background: white;
+    background: var(--card);
     padding: 16px 0;
     text-align: center;
     border-bottom: 1px solid #e5e7eb;
@@ -81,7 +99,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #0077cc;
+    color: var(--primary);
 }
 
 nav a::after {
@@ -91,7 +109,7 @@ nav a::after {
     bottom: -4px;
     width: 0%;
     height: 2px;
-    background: #0077cc;
+    background: var(--primary);
     transition: width 0.25s ease;
 }
 
@@ -135,7 +153,7 @@ nav a:hover::after {
 }
 
 .hero-name span:last-child {
-    color: #0077cc;
+    color: var(--primary);
 }
 
 .profile-photo {
@@ -161,7 +179,7 @@ nav a:hover::after {
 
 .subtitle {
     font-size: 21px;
-    color: #555;
+    color: var(--text-secondary);
     text-align: center;
     max-width: 700px;
     margin: 18px auto;
@@ -177,7 +195,7 @@ nav a:hover::after {
 }
 
 .project-card {
-    background: white;
+    background: var(--card);
     padding: 20px;
     margin-top: 10px;
     border-radius: 8px;
@@ -197,7 +215,7 @@ nav a:hover::after {
 
 .project-card p {
     font-size: 15px;
-    color: #555;
+    color: var(--text-secondary);
 }
 
 .project-card img {
@@ -216,7 +234,7 @@ nav a:hover::after {
     display: inline-block;
     margin-right: 10px;
     padding: 9px 15px;
-    background-color: #0077cc;
+    background-color: var(--primary);
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -224,14 +242,14 @@ nav a:hover::after {
 }
 
 .project-buttons a:hover {
-    background-color: #005fa3;
+    background-color: var(--primary-hover);
 }
 
 .resume-button {
     display: inline-block;
     margin-top: 25px;
     padding: 12px 22px;
-    background-color: #0077cc;
+    background-color: var(--primary);
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -240,7 +258,7 @@ nav a:hover::after {
 }
 
 .resume-button:hover {
-    background-color: #005fa3;
+    background-color: var(--primary-hover);
     transform: translateY(-2px);
 }
 
@@ -252,7 +270,7 @@ nav a:hover::after {
 }
 
 .skill-card {
-    background: white;
+    background: var(--card);
     padding: 22px;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
@@ -270,7 +288,7 @@ nav a:hover::after {
 .footer {
     margin-top: 60px;
     padding: 30px;
-    background: white;
+    background: var(--card);
     border-top: 1px solid #ddd;
     text-align: center;
 }
@@ -282,7 +300,7 @@ nav a:hover::after {
 .footer-links a {
     margin: 0 10px;
     text-decoration: none;
-    color: #0077cc;
+    color: var(--primary);
     font-weight: 500;
 }
 
@@ -297,7 +315,7 @@ nav a:hover::after {
 }
 
 .footer-links a:hover {
-    color: #0077cc;
+    color: var(--primary);
 }
 
 .copyright {
@@ -311,7 +329,7 @@ nav a:hover::after {
 
 .project-tags span {
     display: inline-block;
-    background: #eef3f8;
+    background: var(--tag-bg);
     color: #444;
     padding: 5px 10px;
     margin: 4px 6px 0 0;
@@ -346,7 +364,7 @@ nav a:hover::after {
 }
 
 .hero-social a:hover {
-    color: #0077cc;
+    color: var(--primary);
     transform: translateY(-2px);
 }
 
@@ -357,7 +375,7 @@ nav a:hover::after {
 
 .skill-tags span {
     display: inline-block;
-    background: #eef3f8;
+    background: var(--tag-bg);
     padding: 6px 12px;
     margin: 4px 6px 4px 0;
     border-radius: 20px;
@@ -384,7 +402,7 @@ nav a:hover::after {
 }
 
 .about-box {
-    background: white;
+    background: var(--card);
     padding: 18px;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
@@ -400,7 +418,7 @@ nav a:hover::after {
 
 .about-tags span {
     display: inline-block;
-    background: #eef3f8;
+    background: var(--tag-bg);
     padding: 5px 10px;
     margin: 4px 6px 4px 0;
     border-radius: 16px;
