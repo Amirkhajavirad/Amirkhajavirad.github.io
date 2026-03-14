@@ -279,3 +279,44 @@ nav a:hover {
     font-size: 12px;
     border-radius: 4px;
 }
+
+
+@media (max-width: 768px) {
+
+.hero {
+    padding: 70px 20px;
+}
+
+.hero-top {
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hero-name {
+    align-items: center;
+    text-align: center;
+    font-size: 42px;
+}
+
+.profile-photo {
+    width: 140px;
+    height: 140px;
+}
+
+.subtitle {
+    font-size: 18px;
+}
+
+.hero-intro {
+    font-size: 15px;
+}
+
+nav {
+    font-size: 14px;
+}
+
+.project-card img {
+    height: 160px;
+}
+
+}
