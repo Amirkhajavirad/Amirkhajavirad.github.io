@@ -158,12 +158,18 @@ nav a:hover {
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 18px rgba(0,0,0,0.15);
+    transform: translateY(-6px);
+    box-shadow: 0px 12px 24px rgba(0,0,0,0.18);
 }
 
 .project-card h3 {
-    margin-top: 0;
+    margin-top: 8px;
+    font-size: 20px;
+}
+
+.project-card p {
+    font-size: 15px;
+    color: #555;
 }
 
 .project-card img {
@@ -175,13 +181,13 @@ nav a:hover {
 }
 
 .project-buttons {
-    margin-top: 15px;
+    margin-top: 18px;
 }
 
 .project-buttons a {
     display: inline-block;
     margin-right: 10px;
-    padding: 8px 14px;
+    padding: 9px 15px;
     background-color: #0077cc;
     color: white;
     text-decoration: none;
@@ -273,12 +279,14 @@ nav a:hover {
 .project-tags span {
     display: inline-block;
     background: #eef3f8;
-    color: #333;
-    padding: 4px 10px;
-    margin: 4px 4px 0 0;
+    color: #444;
+    padding: 5px 10px;
+    margin: 4px 6px 0 0;
     font-size: 12px;
-    border-radius: 4px;
+    border-radius: 20px;
+    font-weight: 500;
 }
+
 
 
 @media (max-width: 768px) {
