@@ -203,3 +203,17 @@ nav a:hover {
     font-size: 14px;
     color: #777;
 }
+
+.project-tags {
+    margin-top: 10px;
+}
+
+.project-tags span {
+    display: inline-block;
+    background: #eef3f8;
+    color: #333;
+    padding: 4px 10px;
+    margin: 4px 4px 0 0;
+    font-size: 12px;
+    border-radius: 4px;
+}
