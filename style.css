@@ -436,6 +436,10 @@ nav a:hover::after {
 
 @media (max-width: 768px) {
 
+nav {
+    flex-wrap: wrap;
+}
+
 .hero {
     padding: 70px 20px;
 }
@@ -475,7 +479,7 @@ nav a {
     font-size: 14px;
 }
 
-/* About section */
+/* About */
 
 .about-container {
     grid-template-columns: 1fr;
@@ -496,6 +500,26 @@ nav a {
 
 .skills {
     grid-template-columns: 1fr;
+}
+
+/* Project Buttons */
+
+.project-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-buttons a {
+    width: 100%;
+    text-align: center;
+    padding: 10px 14px;
+}
+
+.project-buttons a:last-child {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
 }
 
 }
