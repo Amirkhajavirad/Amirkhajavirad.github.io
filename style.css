@@ -63,12 +63,16 @@ nav a:hover {
 
 .hero {
     text-align: center;
-    margin-top: 60px;
+    padding: 100px 20px;
+    margin-top: 40px;
+    background: linear-gradient(135deg, #eef3f8, #ffffff);
+    border-radius: 10px;
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 52px;
     margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
 
