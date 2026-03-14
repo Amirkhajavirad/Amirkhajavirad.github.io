@@ -288,6 +288,18 @@ nav a:hover {
 }
 
 
+.github-btn {
+    background-color: #333;
+}
+
+.github-btn:hover {
+    background-color: #111;
+}
+
+.project-buttons i {
+    margin-right: 6px;
+}
+
 
 @media (max-width: 768px) {
 
