@@ -634,6 +634,7 @@ nav a {
 
 .project-buttons {
     flex-direction: column;
+    gap: 12px;
 }
 
 .project-buttons a {
