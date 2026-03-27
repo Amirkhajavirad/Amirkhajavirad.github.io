@@ -72,6 +72,12 @@ h2 {
     color:var(--text-secondary);
 }
 
+/* .about-text p {
+    max-width: 700px;
+    margin: 0 auto 18px auto;
+    line-height: 1.75;
+} */
+
 ul {
     max-width: 800px;
 }
