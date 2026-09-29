@@ -594,13 +594,13 @@
         state.w = w; state.h = h; state.dpr = dpr; state.aspect = w / h;
         canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
         var a = state.aspect;
-        state.strip = !!(window.matchMedia && window.matchMedia('(max-width: 900px)').matches);
+        state.strip = !!(window.matchMedia && window.matchMedia('(max-width: 900px) and (min-height: 501px)').matches);
         if (state.strip) { state.shiftX = 0; state.shiftY = 0.05; }
         else if (a >= 1.15) { state.shiftX = clamp(0.26 + (a - 1.15) * 0.36, 0.26, 0.41); state.shiftY = -0.02; }
         else if (a >= 0.85) { state.shiftX = 0.16; state.shiftY = 0.22; }
         else { state.shiftX = 0; state.shiftY = 0.30; }
         var fov = 0.5;
-        if (state.strip) { state.dist = Math.max(10.2, 5.4 / (2 * Math.tan(fov / 2) * a)); }
+        if (state.strip) { state.dist = Math.max(9.0, 4.9 / (2 * Math.tan(fov / 2) * a)); }
         else {
             state.dist = Math.max(12, 5.2 / (2 * Math.tan(fov / 2) * a));
             if (a >= 0.85 && a < 1.15) { state.dist = Math.max(state.dist, 13.5); }
@@ -794,7 +794,7 @@
         state.px = damp(state.px, state.pointerSeen ? state.ptx : 0, 5 * k, dt);
         state.py = damp(state.py, state.pointerSeen ? state.pty : 0, 5 * k, dt);
         state.explode = damp(state.explode, state.explodeT, 3.2 * k, dt);
-        state.camY = damp(state.camY, state.activeT >= 0 ? (state.activeT - 1.5) * lerp(0.36, 1.0, state.explode) * 0.3 : 0, 3 * k, dt);
+        state.camY = damp(state.camY, state.activeT >= 0 ? (state.activeT - 1.5) * lerp(0.36, state.strip ? 0.8 : 1.0, state.explode) * 0.3 : 0, 3 * k, dt);
         if (!state.dragging) { state.yaw += state.yawVel; state.yawVel *= 0.93; state.yaw = damp(state.yaw, 0, 0.35, dt); }
         state.active = state.activeT;
 
@@ -833,7 +833,7 @@
         state.lightW = [o[0] + dir[0] * d * 0.82, o[1] + dir[1] * d * 0.82 + 0.6, o[2] + dir[2] * d * 0.82];
 
         // slab placement
-        var gap = lerp(0.36, 1.0, state.explode), best = -1, bestT = 1e9;
+        var gap = lerp(0.36, state.strip ? 0.8 : 1.0, state.explode), best = -1, bestT = 1e9;
         slabs.forEach(function (s, i) {
             var ie = REDUCE ? 1 : easeOut((now - state.t0 - 250 - i * 140) / 1000);
             s.intro = ie;

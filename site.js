@@ -257,9 +257,15 @@
         var started = false;
         function start() { if (!started) { started = true; run(); } }
         if ('IntersectionObserver' in window) {
+            // On a phone the pinned stack covers the top of the screen, so only count what is visible below it.
+            var offset = 0;
+            if (window.matchMedia('(max-width: 900px) and (min-height: 501px)').matches) {
+                var hdr = document.querySelector('.site-header'), scn = document.querySelector('.scene');
+                offset = Math.round((hdr ? hdr.getBoundingClientRect().height : 0) + (scn ? scn.getBoundingClientRect().height : 0));
+            }
             var io = new IntersectionObserver(function (entries) {
                 entries.forEach(function (e) { if (e.isIntersecting) { start(); io.disconnect(); } });
-            }, { threshold: 0.35 });
+            }, { threshold: 0.25, rootMargin: '-' + offset + 'px 0px 0px 0px' });
             io.observe(stagesEl);
         } else { start(); }
     })();

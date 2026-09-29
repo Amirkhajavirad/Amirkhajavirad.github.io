@@ -16,8 +16,9 @@ Personal portfolio. Plain HTML, CSS and two small JavaScript files. No build ste
 
 - Without WebGL the page shows a still image of the stack and every section stays readable.
 - With `prefers-reduced-motion`, the stack is assembled and still, and the portrait does not move.
-- Up to 900px wide the stack is pinned in a strip under the header and the text scrolls beneath it.
-- The collage is draggable from 760px up. On smaller screens it becomes a list, and every card still opens its detail dialog.
+- On phones and tablets held upright (900px wide or less, taller than 500px) the stack is pinned in a strip under the header and the text scrolls beneath it, as plain text with no card. On landscape phones the desktop layout is used instead, since a strip would leave no room to read. Under 620px wide the header is a single row of navigation only (the name is in the hero, and stays available to screen readers).
+- The collage is draggable from 760px up. On smaller screens it becomes a list, cards show "View details", and every card still opens its detail dialog.
+- Each project image has its natural ratio set inline (`--ar`), so space is reserved before a lazy image loads. Without it, the page can shift after using a nav link on a phone.
 
 - The About portrait is the video. Its poster (`amir-intro-first.webp`, the first frame) is what shows from the start, so the older still portrait (plate, orange disc and cutout) is never visible when the video can be used. The video loops while on screen and pauses when off screen. It does not load until the section is reached. The still portrait is only the fallback, for reduced motion, data-saver mode or a clip that fails to load. The clip is played as is, so there is a visible jump when it restarts. To replace it, encode a new silent clip as `amir-intro.mp4` and `amir-intro.webm` (about 608x644) and update `amir-intro-first.webp`.
 

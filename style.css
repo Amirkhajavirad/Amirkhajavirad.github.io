@@ -373,7 +373,8 @@ html:not(.js) .proj, .collage.is-static .proj { position: static; width: auto; t
     .proj--note { width: min(220px, 26vw); }
 }
 
-@media (max-width: 1200px) {
+/* Text sits over the stack on mid-width screens and on landscape phones, so it gets a soft card. */
+@media (min-width: 901px) and (max-width: 1200px), (max-width: 900px) and (max-height: 500px) {
     .layer__text {
         background: rgba(231, 235, 241, 0.86);
         -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
@@ -382,51 +383,93 @@ html:not(.js) .proj, .collage.is-static .proj { position: static; width: auto; t
 }
 
 @media (max-width: 900px) {
-    :root { --strip-h: 44svh; }
-    /* The stack is pinned in a strip under the header; the text scrolls beneath it. */
+    .path__grid, .about__grid { grid-template-columns: minmax(0, 1fr); }
+    .path__label { position: static; }
+    .portrait { max-width: 340px; }
+}
+
+/* Phones and tablets held upright: the stack is pinned in a strip under the header and the text scrolls beneath it. */
+@media (max-width: 900px) and (min-height: 501px) {
+    :root { --strip-h: clamp(210px, 34svh, 320px); }
+    .site-header { background: var(--bench); -webkit-backdrop-filter: none; backdrop-filter: none; }
     .scene {
         inset: var(--header-h) 0 auto 0; height: var(--strip-h); z-index: 5;
         background: linear-gradient(180deg, var(--bench-hi), var(--bench));
-        -webkit-mask-image: linear-gradient(#000 93%, transparent); mask-image: linear-gradient(#000 93%, transparent);
+        -webkit-mask-image: linear-gradient(#000 88%, transparent); mask-image: linear-gradient(#000 88%, transparent);
     }
     html { scroll-padding-top: calc(var(--header-h) + var(--strip-h) + 6px); }
     .projects, .path, .about, .contact-block { scroll-margin-top: calc(-1 * var(--strip-h)); }
     .layer__grid { grid-template-columns: minmax(0, 1fr); }
-    .layer { min-height: 0; padding-top: 3svh; padding-bottom: 6svh; }
-    .layer__text {
-        background: rgba(231, 235, 241, 0.9);
-        -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-        padding: 22px 20px; border-radius: 18px; border: 1px solid rgba(14,21,38,0.08);
-    }
-    .hero { align-items: flex-start; min-height: 0; padding-top: calc(var(--strip-h) + 14px); padding-bottom: 8svh; }
+    .layer { min-height: 0; padding-top: 30px; padding-bottom: 26px; }
+    .layer + .layer { border-top: 1px solid rgba(14,21,38,0.1); }
+    .layer__lede { margin-top: 16px; font-size: 1.08rem; }
+    .facts { margin-top: 24px; }
+    .facts li { padding-left: 16px; }
+    .hero { align-items: flex-start; min-height: 0; padding-top: calc(var(--strip-h) + 18px); padding-bottom: 34px; }
     .hero__copy { max-width: 34rem; }
-    .path__grid, .about__grid { grid-template-columns: minmax(0, 1fr); }
-    .path__label { position: static; }
-    .portrait { max-width: 340px; }
 }
 
 @media (max-width: 759px) {
     .collage { height: auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
     .proj, .proj--note { position: static; width: auto; transform: none; }
     .js .proj { cursor: pointer; }
+    /* Natural shape on phones (no crop). The ratio is set per image so space is reserved before a lazy image loads. */
+    .proj__img { aspect-ratio: var(--ar, 4 / 3); object-fit: cover; }
+    /* Cards open a dialog; say so, since there is no hover on a phone. */
+    .js .proj::after {
+        content: "View details \2192"; display: block; margin-top: 12px;
+        font-family: var(--display); font-weight: 650; font-size: 0.92rem; color: var(--ink);
+        text-decoration: underline; text-decoration-color: var(--signal); text-decoration-thickness: 2px; text-underline-offset: 0.2em;
+    }
     .timeline li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
     .toolbox > div { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 620px) {
-    :root { --header-h: 86px; }
+    :root { --header-h: 52px; }
     .stage-labels { display: none; }
     body { font-size: 1.02rem; }
     .hero h1 { font-size: 11.6vw; }
-    .site-header__row { flex-wrap: wrap; padding-block: 8px; gap: 2px 16px; }
-    .site-nav { width: 100%; gap: 11px; overflow-x: auto; padding-block: 4px 6px; scrollbar-width: none; font-size: 0.86rem; }
+
+    /* One row, no wrapping: the name is already in the hero, so the header carries navigation only. */
+    .site-header__row { min-height: var(--header-h); padding-block: 0; gap: 0; }
+    .brand { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .site-nav { width: 100%; justify-content: space-between; gap: 0; font-size: 0.82rem; overflow-x: auto; scrollbar-width: none; }
     .site-nav::-webkit-scrollbar { display: none; }
-    .site-nav a { white-space: nowrap; }
-    .site-nav .site-nav__resume { padding: 3px 10px; }
-    .hero__actions .button { flex: 1 0 100%; text-align: center; }
+    .site-nav a { white-space: nowrap; padding: 15px 5px; }
+    .site-nav .site-nav__resume { padding: 8px 12px; margin-left: 4px; }
+
+    .hero__actions { gap: 4px 18px; }
+    .hero__actions .button { flex: 1 0 100%; text-align: center; margin-bottom: 8px; }
+    .hero__hint { display: none; }
+    .text-link, .contact-block__links a, .site-footer a { display: inline-block; padding-block: 9px; }
+    .contact-block__links { gap: 0 22px; }
+
+    .layer h2 { font-size: 1.65rem; }
+    .layer__lede { font-size: 1.04rem; }
+    .projects__head h2, .path h2, .about h2 { font-size: 1.75rem; }
+
+    .pipeline { padding: 16px; margin-top: 24px; }
+    .stage { min-height: 29px; font-size: 0.9rem; }
+    .stage-group { margin-top: 12px; }
+    .faults span { padding: 8px 12px; }
+    .pipeline__result { min-height: 2.9em; }
+    .pipeline__log { height: 6.2rem; }
+    .pipeline__run, .pipeline__confirm { min-height: 40px; }
+
     .speed__row { grid-template-columns: minmax(0, 1fr) auto; }
     .speed__bars { grid-column: 1 / -1; grid-row: 2; }
     .speed__gain { grid-column: 2; grid-row: 1; }
+
+    .contact-block { padding-block: 64px 56px; }
+    .site-footer__row { gap: 0 16px; }
+}
+
+@media (max-width: 380px) {
+    .site-nav { font-size: 0.78rem; }
+    .site-nav a { padding-inline: 3px; }
+    .site-nav .site-nav__resume { padding: 8px 10px; margin-left: 2px; }
+    .hero h1 { font-size: 11.2vw; }
 }
 
 @media (prefers-reduced-motion: reduce) {
