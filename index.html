@@ -1,101 +1,506 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-CA">
 <head>
-    <title>Amirhossein Khajavirad</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Amir Khajavirad | Biomedical Engineer, Robotics and Embedded Systems</title>
+    <meta name="description" content="Biomedical engineer in Edmonton building Raspberry Pi robotic rehabilitation platforms, secure over-the-air update pipelines, biomechanical test rigs and clinical data analysis.">
+    <meta name="theme-color" content="#E7EBF1">
+
+    <meta property="og:title" content="Amir Khajavirad | Biomedical Engineer">
+    <meta property="og:description" content="Hardware, robot software, deployment and data: one engineer across all four layers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amirkhajavirad.github.io/">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1526'/%3E%3Cpath d='M12 24 32 14l20 10-20 10zM12 34l20 10 20-10M12 44l20 10 20-10' stroke='%23FF4F1F' stroke-width='4' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="container">
+<!-- Fixed 3D stage. Decorative; every fact on it is also written in the page. -->
+<div class="scene" aria-hidden="true">
+    <canvas id="stage-canvas"></canvas>
+    <img class="scene__poster" src="images/web/stack-poster.webp" alt="" width="900" height="900">
+</div>
+<div id="stage-labels" class="stage-labels"></div>
 
-    <div class="nav-container">
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="skills.html">Skills</a>
-            <a href="files/resume.pdf" target="_blank">Resume</a>
-            <a href="contact.html">Contact</a>
+<header class="site-header">
+    <div class="wrap site-header__row">
+        <a class="brand" href="#top">Amir Khajavirad</a>
+        <nav class="site-nav" aria-label="Primary">
+            <a href="#hardware">Layers</a>
+            <a href="#projects">Projects</a>
+            <a href="#path">Path</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a class="site-nav__resume" href="files/resume.pdf" target="_blank" rel="noopener">Résumé</a>
         </nav>
     </div>
+</header>
 
-    <section class="hero">
+<main id="main">
 
-        <div class="hero-top">
-            <img src="images/profile.PNG" alt="Amirhossein Khajavirad" class="profile-photo">
+<!-- ================================ HERO ================================ -->
+<section class="hero" id="top">
+    <div class="wrap hero__inner">
+        <div class="hero__copy">
+            <h1>Amir <span>Khajavirad</span></h1>
+            <p class="hero__role">Biomedical engineer building robots, the software on them, and the analysis of what they produce.</p>
+            <p class="hero__line">Most systems work in theory. I make them work in practice.</p>
+            <div class="hero__actions">
+                <a class="button" href="files/resume.pdf" target="_blank" rel="noopener">Download résumé</a>
+                <a class="text-link" href="https://github.com/Amirkhajavirad" target="_blank" rel="noopener">GitHub</a>
+                <a class="text-link" href="https://linkedin.com/in/amirkhajavirad" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="text-link" href="mailto:khajavir@ualberta.ca">Email</a>
+            </div>
+            <p class="hero__hint" data-hint>Move the cursor over the stack, drag it to turn it, and scroll to take it apart.</p>
+        </div>
+    </div>
+</section>
 
-            <h1 class="hero-name">
-                <span>Amir</span>
-                <span>Khajavirad</span>
-            </h1>
+<!-- ============================== LAYER 1 ============================== -->
+<section class="layer" id="hardware" aria-labelledby="hardware-title">
+    <div class="wrap layer__grid">
+        <div class="layer__text">
+            <h2 id="hardware-title">Hardware: getting sensors, motors and wiring to agree</h2>
+            <p class="layer__lede">
+                The lab’s rehabilitation robots run on a Raspberry Pi and a set of parts that have to agree with each
+                other: RFID readers, HX711 load cells, photo interrupter sensors, a stepper motor and pellet delivery hardware.
+                I developed and refined that platform until an operator could run it from a touchscreen.
+            </p>
+            <ul class="facts">
+                <li>
+                    <h3>Debugging across the boundary</h3>
+                    <p>Tracked down faults in GPIO, SPI and UART communication, RFID readers, load cells, stepper motors, PCB connections and wiring, including differences between Raspberry Pi 4 and 5.</p>
+                </li>
+                <li>
+                    <h3>Calibration an operator can follow</h3>
+                    <p>Refined the calibration for motor homing, pedestal positioning, pellet sensors and load cell zeroing, with guided steps, safety checks and a diagnostic for each way it can fail.</p>
+                </li>
+                <li>
+                    <h3>Standalone and Shuttle modes</h3>
+                    <p>Implemented and validated both operating modes. Shuttle Mode changes how a pellet is presented after an outcome, while the RFID, sensing, analysis and logging pipeline stays the same.</p>
+                </li>
+                <li>
+                    <h3>Rigs outside the robot lab</h3>
+                    <p>A biomechanical test platform for distal biceps tendon fixation, and an Arduino lighting controller for neonatal incubators.</p>
+                    <p class="facts__open">
+                        <button type="button" class="chip-button" data-open="biceps">Distal biceps platform</button>
+                        <button type="button" class="chip-button" data-open="circadian">Neonatal lighting</button>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== LAYER 2 ============================== -->
+<section class="layer" id="software" aria-labelledby="software-title">
+    <div class="wrap layer__grid">
+        <div class="layer__text">
+            <h2 id="software-title">Software: a touchscreen operators can trust</h2>
+            <p class="layer__lede">
+                The robots are run by lab staff between experiments, so the interface has to be hard to misuse. I built the
+                Python and Tkinter application that starts and stops the robot, manages RFID tags, sets up experiments,
+                shows live status and walks the operator through calibration and updates. It is roughly 19,000 lines.
+            </p>
+            <ul class="facts">
+                <li>
+                    <h3>One button per step</h3>
+                    <p>Redesigned the Software Update screen from 9 buttons and 13 information rows into a guided flow. It reuses the existing safety gates, so the redesign can delay a button but never enable an install early.</p>
+                </li>
+                <li>
+                    <h3>Built for touch</h3>
+                    <p>A scrollable RFID picker that tells taps from drags, an on-screen QWERTY keyboard, a validated configuration editor with atomic writes, and live countdown timers for limits.</p>
+                </li>
+                <li>
+                    <h3>Interface and hardware kept apart</h3>
+                    <p>The touchscreen talks to the control logic through runtime state files and file-based inter-process communication, so operator controls never sit in the hardware loop.</p>
+                </li>
+                <li>
+                    <h3>Bugs that were eating valid trials</h3>
+                    <p>Fixed backend faults that discarded valid trial attempts (event ordering, dropped pending input, index errors) and a crash report that named the wrong robot. An audit of the logging found about 240 silently swallowed exceptions, and I designed a structured diagnostics plan to replace them.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== LAYER 3 ============================== -->
+<section class="layer" id="network" aria-labelledby="network-title">
+    <div class="wrap layer__grid">
+        <div class="layer__text">
+            <h2 id="network-title">Network and deployment: updates that refuse to break a robot</h2>
+            <p class="layer__lede">
+                A fleet is only useful if every unit can be updated safely without someone visiting each one with a laptop.
+                I designed and shipped a secure over-the-air update pipeline for the fleet, which is growing from 5 units
+                to a planned 12, then tested every way it can fail.
+            </p>
+
+            <section class="pipeline" aria-labelledby="pipeline-title">
+                <div class="pipeline__head">
+                    <h3 id="pipeline-title">Try to break an update</h3>
+                    <p class="pipeline__note">A simulation of the flow I built. Version numbers are examples.</p>
+                </div>
+
+                <ol class="stages" id="stages">
+                    <li class="stage-group" aria-hidden="true">GitHub Actions and release</li>
+                    <li class="stage" data-stage="tag"><span class="stage__mark"></span><span class="stage__label">Version tag pushed</span></li>
+                    <li class="stage" data-stage="build"><span class="stage__mark"></span><span class="stage__label">Build and validate the package</span></li>
+                    <li class="stage" data-stage="checksum"><span class="stage__mark"></span><span class="stage__label">Compute SHA256, write manifest</span></li>
+                    <li class="stage" data-stage="draft"><span class="stage__mark"></span><span class="stage__label">Publish draft release</span></li>
+                    <li class="stage" data-stage="approve"><span class="stage__mark"></span><span class="stage__label">Maintainer approves</span></li>
+
+                    <li class="stage-group" aria-hidden="true">On the robot</li>
+                    <li class="stage" data-stage="auth"><span class="stage__mark"></span><span class="stage__label">Authenticate with read-only token</span></li>
+                    <li class="stage" data-stage="manifest"><span class="stage__mark"></span><span class="stage__label">Read manifest, compare versions</span></li>
+                    <li class="stage" data-stage="download"><span class="stage__mark"></span><span class="stage__label">Download to a .part file</span></li>
+                    <li class="stage" data-stage="verify"><span class="stage__mark"></span><span class="stage__label">Verify SHA256</span></li>
+                    <li class="stage" data-stage="validate"><span class="stage__mark"></span><span class="stage__label">Validate package structure</span></li>
+                    <li class="stage" data-stage="promote"><span class="stage__mark"></span><span class="stage__label">Promote atomically</span></li>
+                    <li class="stage stage--gate" data-stage="confirm">
+                        <span class="stage__mark"></span>
+                        <span class="stage__label">Operator confirms install</span>
+                        <button type="button" class="pipeline__confirm" id="confirm" hidden>Confirm install</button>
+                    </li>
+                    <li class="stage" data-stage="install"><span class="stage__mark"></span><span class="stage__label">Install and reboot</span></li>
+                </ol>
+
+                <fieldset class="faults">
+                    <legend>Break something</legend>
+                    <label><input type="radio" name="fault" value="none" checked><span>Nothing</span></label>
+                    <label><input type="radio" name="fault" value="auth"><span>Revoked token</span></label>
+                    <label><input type="radio" name="fault" value="manifest"><span>Malformed manifest</span></label>
+                    <label><input type="radio" name="fault" value="network"><span>Network drop</span></label>
+                    <label><input type="radio" name="fault" value="checksum"><span>Corrupt download</span></label>
+                </fieldset>
+
+                <p class="pipeline__result" id="result" aria-live="polite"></p>
+                <ol class="pipeline__log" id="log" role="log" aria-label="Update log"></ol>
+                <button type="button" class="pipeline__run" id="run">Run again</button>
+                <noscript><p class="pipeline__result">Turn on JavaScript to run the simulation.</p></noscript>
+            </section>
+
+            <ul class="facts">
+                <li>
+                    <h3>Two gates, one approval</h3>
+                    <p>A tag-triggered GitHub Actions workflow builds and validates the package, computes its SHA256 checksum, writes a production manifest and publishes a draft release, which is the single human approval gate. On the robot, nothing installs or reboots without operator confirmation, and I tested the full flow with a real remote install and reboot on hardware.</p>
+                </li>
+                <li>
+                    <h3>Least privilege</h3>
+                    <p>The client is plain Python standard library. Each robot has its own read-only, single-repository token, so one can be revoked without touching the rest, and a regression scanner checks every log and status file for leaked secrets.</p>
+                </li>
+                <li>
+                    <h3>Tests for the bad days</h3>
+                    <p>Mocked-network suites cover rejected authentication, a network drop mid-download, a checksum mismatch and a malformed manifest. They caught bugs before hardware testing, including a network error that was being reported as a disk error.</p>
+                </li>
+
+                <li class="facts__speed">
+                    <h3>Faster checks, same results</h3>
+                    <figure class="speed" aria-labelledby="speed-caption">
+                        <div class="speed__row">
+                            <p class="speed__name">Preflight</p>
+                            <div class="speed__bars">
+                                <div class="bar bar--before" style="--w:50%"><span>about 2 min</span></div>
+                                <div class="bar bar--after" style="--w:8.3%"><span>20 s</span></div>
+                            </div>
+                            <p class="speed__gain">6× faster</p>
+                        </div>
+                        <div class="speed__row">
+                            <p class="speed__name">Install</p>
+                            <div class="speed__bars">
+                                <div class="bar bar--before" style="--w:100%"><span>about 4 min</span></div>
+                                <div class="bar bar--after" style="--w:12.5%"><span>30 s</span></div>
+                            </div>
+                            <p class="speed__gain">8× faster</p>
+                        </div>
+                        <figcaption id="speed-caption">cProfile showed the same files being re-parsed 8 to 41 times per run. A content-hash cache removed that work, and validation gave identical results on valid and deliberately broken code.</figcaption>
+                    </figure>
+                </li>
+
+                <li>
+                    <h3>Robots that talk to each other</h3>
+                    <p>Advanced the TCP protocol for multi-robot coordination: RFID transfer, outcome messages, acknowledgements and duplicate protection. Also traced unstable eduroam (WPA2-Enterprise) Wi-Fi on NetworkManager through <code>journalctl</code> and <code>nmcli</code>, then added persistent auto-reconnect and a Forget Network control.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== LAYER 4 ============================== -->
+<section class="layer" id="data" aria-labelledby="data-title">
+    <div class="wrap layer__grid">
+        <div class="layer__text">
+            <h2 id="data-title">Data: analysis you can audit</h2>
+            <p class="layer__lede">
+                Most of my data work is clinical or experimental data that has to stay traceable from the raw values to the final figure.
+                I clean, check and analyze it in Python and Excel, and I would rather report a wide confidence interval than a confident guess.
+            </p>
+            <ul class="facts">
+                <li>
+                    <h3>A supportive oncology dataset</h3>
+                    <p>Repeated hematology measurements and chemotherapy-related adverse events for 34 breast cancer patients on melatonin or placebo. I found and corrected inconsistent white blood cell count scaling while keeping the original values, then used risk estimates, 95% confidence intervals and Fisher’s exact tests for rare outcomes.</p>
+                    <p class="facts__open"><button type="button" class="chip-button" data-open="clinical">Open the analysis</button></p>
+                </li>
+                <li>
+                    <h3>Six tumour subtypes from 54,676 genes</h3>
+                    <p>A graduate project on microarray data from 151 biopsies. The best models reached up to 96% accuracy and 94% macro F1 across 5-run cross-validation.</p>
+                    <p class="facts__open"><button type="button" class="chip-button" data-open="microarray">Open the project</button></p>
+                </li>
+                <li>
+                    <h3>Validation that does not cheat</h3>
+                    <p>In PredictIQ, a football outcome model, I designed time-aware validation to prevent data leakage. The tuned XGBoost model reached a macro F1 of 0.357 and beat the baselines.</p>
+                    <p class="facts__open"><button type="button" class="chip-button" data-open="predictiq">Open the project</button></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== PROJECTS ============================== -->
+<section class="projects" id="projects" aria-labelledby="projects-title">
+    <div class="wrap">
+        <header class="projects__head">
+            <h2 id="projects-title">Projects</h2>
+            <p>Academic and personal work. Open a card for the detail.<span class="drag-hint"> On a larger screen you can drag them around.</span></p>
+        </header>
+
+        <div class="collage" id="collage">
+
+            <article class="proj" id="proj-biceps" data-id="biceps" style="--x:3%;--y:10px;--r:-2.5deg">
+                <img class="proj__img" src="images/web/distal-biceps.webp" width="1200" height="731" loading="lazy" alt="Rendering of a 3D printed bone model with a cortical button fixation fixture">
+                <h3 class="proj__title">Biomechanical testing platform for distal biceps fixation</h3>
+                <p class="proj__meta">Master’s capstone, University of Alberta. September to December 2025</p>
+                <div class="proj__body">
+                    <p>A standardized rig for comparing unicortical and bicortical cortical button fixation of the distal biceps tendon, combining 3D printed anatomical bone models and custom fixtures with a BOSE ElectroForce mechanical testing system.</p>
+                    <ul>
+                        <li>Implemented cyclic loading and pull-to-failure protocols based on the biomechanical literature.</li>
+                        <li>Built the workflow around reproducibility, to reduce variability between specimens and make the two fixation methods quantitatively comparable.</li>
+                        <li>Presented as a poster, “Testing of Repair Techniques for Distal Biceps Tendon Tears,” at the University of Alberta engineering research symposium.</li>
+                    </ul>
+                    <p class="proj__tools">SolidWorks, 3D printing, BOSE ElectroForce</p>
+                </div>
+            </article>
+
+            <article class="proj" id="proj-circadian" data-id="circadian" style="--x:36%;--y:110px;--r:2deg">
+                <img class="proj__img" src="images/web/circadian-lighting.webp" width="900" height="810" loading="lazy" alt="A neonatal incubator lit with soft blue light">
+                <h3 class="proj__title">Adaptive circadian lighting for neonatal incubators</h3>
+                <p class="proj__meta">Undergraduate capstone. May to June 2022</p>
+                <div class="proj__body">
+                    <p>An embedded system that shifts incubator lighting through a day and night cycle suited to premature infants. I wrote the C++ firmware on Arduino, integrated the electronics and delivered the first working prototype.</p>
+                    <ul>
+                        <li>Developed the microcontroller control logic for dynamic light regulation.</li>
+                        <li>Validated the hardware through testing, debugging and performance checks.</li>
+                    </ul>
+                    <p class="proj__tools">C++, Arduino, circuit design, hardware prototyping</p>
+                </div>
+            </article>
+
+            <article class="proj" id="proj-clinical" data-id="clinical" style="--x:68%;--y:20px;--r:-1.5deg">
+                <div class="proj__art" aria-hidden="true">
+                    <svg viewBox="0 0 240 150" role="presentation" focusable="false">
+                        <rect width="240" height="150" fill="#F3F5F8"/>
+                        <g>
+                            <rect x="20" y="20" width="200" height="16" rx="3" fill="#DDE3EE"/><rect x="20" y="20" width="118" height="16" rx="3" fill="#0E1526"/><rect x="138" y="20" width="24" height="16" fill="#FF4F1F"/>
+                            <rect x="20" y="50" width="200" height="16" rx="3" fill="#DDE3EE"/><rect x="20" y="50" width="96" height="16" rx="3" fill="#0E1526"/><rect x="116" y="50" width="44" height="16" fill="#FF4F1F"/>
+                            <rect x="20" y="80" width="200" height="16" rx="3" fill="#DDE3EE"/><rect x="20" y="80" width="140" height="16" rx="3" fill="#0E1526"/><rect x="160" y="80" width="18" height="16" fill="#FF4F1F"/>
+                            <rect x="20" y="110" width="200" height="16" rx="3" fill="#DDE3EE"/><rect x="20" y="110" width="76" height="16" rx="3" fill="#0E1526"/><rect x="96" y="110" width="58" height="16" fill="#FF4F1F"/>
+                        </g>
+                    </svg>
+                </div>
+                <h3 class="proj__title">Clinical data analysis for a supportive oncology study</h3>
+                <p class="proj__meta">April to June 2026</p>
+                <div class="proj__body">
+                    <p>Analysis of repeated hematologic measurements and chemotherapy-related adverse events in 34 breast cancer patients receiving melatonin or placebo, built as auditable Excel workbooks with publication-ready figures. (The graphic on the card is an illustration, not study data.)</p>
+                    <ul>
+                        <li>Validated and cleaned the data, normalized units and reviewed missing values. Found and corrected inconsistent white blood cell count scaling while keeping the original source values, so every change can be traced.</li>
+                        <li>Followed white blood cell count, hemoglobin and platelet count across four treatment measurements at patient and group level.</li>
+                        <li>Evaluated neutropenia incidence, chemotherapy delays, G-CSF use and hospitalization for neutropenia with fever or infection.</li>
+                        <li>Calculated proportions, risk estimates, 95% confidence intervals and Fisher’s exact tests, which suit outcomes with low event counts.</li>
+                        <li>Produced longitudinal trend plots, baseline-adjusted change plots, risk plots and 100% stacked distribution charts.</li>
+                    </ul>
+                    <p class="proj__tools">Excel, statistics, data validation, visualization</p>
+                </div>
+            </article>
+
+            <article class="proj" id="proj-microarray" data-id="microarray" style="--x:10%;--y:520px;--r:3deg">
+                <img class="proj__img" src="images/web/breast-cancer-ml.webp" width="800" height="800" loading="lazy" alt="Diagram of a machine learning pipeline that classifies breast cancer tissue data">
+                <h3 class="proj__title">Breast cancer subtype classification from microarray data</h3>
+                <p class="proj__meta">Graduate course project. January to April 2025</p>
+                <div class="proj__body">
+                    <p>Classification of six tumour subtypes from a high-dimensional dataset (GSE45827): 151 biopsies measured across 54,676 genes. The best models reached up to 96% accuracy and 94% macro F1 across 5-run cross-validation.</p>
+                    <ul>
+                        <li>Reduced dimensionality with PCA, Kernel PCA and LDA, and used correlation and Random Forest feature importance to deal with multicollinearity.</li>
+                        <li>Compared SVM, Random Forest, KNN, Logistic Regression and Gaussian Naive Bayes.</li>
+                        <li>Used Local Outlier Factor for outlier detection and compared training and test performance to check for overfitting.</li>
+                    </ul>
+                    <p class="proj__tools">Python, scikit-learn</p>
+                </div>
+            </article>
+
+            <article class="proj" id="proj-predictiq" data-id="predictiq" style="--x:43%;--y:540px;--r:-2.5deg">
+                <img class="proj__img" src="images/web/predictiq.webp" width="800" height="800" loading="lazy" alt="Diagram of a machine learning pipeline that predicts football match outcomes from historical data">
+                <h3 class="proj__title">PredictIQ: football match outcome prediction</h3>
+                <p class="proj__meta">Team project, two members. September to December 2025</p>
+                <div class="proj__body">
+                    <p>An end-to-end machine learning pipeline covering data extraction, feature engineering, training and evaluation. The tuned XGBoost model reached a macro F1 of 0.357 and beat the baseline models.</p>
+                    <ul>
+                        <li>Designed time-aware validation to prevent data leakage and to mimic real prediction conditions.</li>
+                        <li>Used SHAP to explain model behaviour and show which features mattered.</li>
+                    </ul>
+                    <p class="proj__tools">Python, XGBoost, SHAP</p>
+                    <p><a href="https://github.com/shervinafzali/PredictIQ" target="_blank" rel="noopener">Source on GitHub</a></p>
+                </div>
+            </article>
+
+            <article class="proj proj--note" id="proj-android" data-id="android" style="--x:74%;--y:500px;--r:2deg">
+                <h3 class="proj__title">Android apps in Java</h3>
+                <p class="proj__meta">Personal and freelance projects</p>
+                <div class="proj__body">
+                    <p>Built Android mobile applications in Java, designing the interfaces and implementing the application logic.</p>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================================ PATH ================================ -->
+<section class="path" id="path" aria-labelledby="path-title">
+    <div class="wrap path__grid">
+        <div class="path__label">
+            <h2 id="path-title">Path</h2>
+            <p>Roles, study and the tools I use</p>
         </div>
 
-        <p class="subtitle">
-            Biomedical Engineer | Embedded & Robotic Systems | Experimental Platforms | Applied Machine Learning
-        </p>
+        <div class="path__body">
+            <ol class="timeline">
+                <li>
+                    <p class="timeline__when">March 2026 to present</p>
+                    <div>
+                        <h3>Robotics Engineer, part-time</h3>
+                        <p class="timeline__where">University of Alberta, Edmonton</p>
+                        <p>Lead development of the robot fleet and supervise two co-op mechatronics students in a 10-member lab team, reviewing their code and guiding hardware debugging. I established semantic versioning and a documented release process, and wrote the operator checklists, safety policy and token onboarding guide. I use GitHub Copilot and Claude daily and review all AI-generated code before it merges.</p>
+                    </div>
+                </li>
+                <li>
+                    <p class="timeline__when">November 2025 to February 2026</p>
+                    <div>
+                        <h3>Robotics Engineer Intern</h3>
+                        <p class="timeline__where">University of Alberta, Edmonton</p>
+                        <p>Took the robot platform from no graphical interface to a full operator GUI. Built the persistent data workflows (daily data files, full historical backups, outcome tracking and per-RFID, per-trial restrictions), the on-device Wi-Fi manager, the first guarded update workflow with backups and rollback, and the first TCP Master and Slave components for a dual-robot setup.</p>
+                    </div>
+                </li>
+                <li>
+                    <p class="timeline__when">September 2024 to present</p>
+                    <div>
+                        <h3>Recreation Facility Operator</h3>
+                        <p class="timeline__where">University of Alberta, Edmonton</p>
+                        <p>Run operations in a busy facility, keeping it safe and reliable while resolving issues in real time.</p>
+                    </div>
+                </li>
+                <li>
+                    <p class="timeline__when">January 2024 to December 2025</p>
+                    <div>
+                        <h3>MSc, Biomedical Engineering</h3>
+                        <p class="timeline__where">University of Alberta, Edmonton</p>
+                        <p>Capstone on a standardized biomechanical testing setup for distal biceps cortical button fixation. Coursework included Imaging Methods in Medicine, Fundamentals of Biomechanical Modelling, Machine Learning in Biomedical Applications, Biomedical Device Design and Technology Development, and Applied Machine Learning and AI. I also served as a DRA Research Supervisor, guiding undergraduate research and supporting experimental setup development.</p>
+                    </div>
+                </li>
+                <li>
+                    <p class="timeline__when">September 2017 to June 2022</p>
+                    <div>
+                        <h3>BSc, Biomedical Engineering</h3>
+                        <p class="timeline__where">Islamic Azad University, Tehran</p>
+                        <p>Capstone: an embedded biomedical device for neonatal circadian lighting control.</p>
+                    </div>
+                </li>
+            </ol>
 
-        <p class="hero-intro">
-            Most systems work in theory, I make them work in practice.
-        </p>
+            <h3 class="path__sub">Toolbox</h3>
+            <dl class="toolbox">
+                <div><dt>Hardware and embedded</dt><dd>Raspberry Pi 4 and 5, GPIO, SPI, UART and serial, RFID, HX711 load cells, photo interrupter sensors, stepper motors, Arduino, C++ for microcontrollers, calibration, safety interlocks</dd></div>
+                <div><dt>Robot software</dt><dd>Python, object-oriented design, state machines, multithreading, subprocess management, file-based inter-process communication, atomic file operations, JSON and CSV, Tkinter touchscreen interfaces</dd></div>
+                <div><dt>Networking and deployment</dt><dd>TCP sockets, REST APIs, NetworkManager and <code>nmcli</code>, 802.1X and WPA2-Enterprise Wi-Fi, over-the-air updates, SHA256 verification, semantic versioning, staging, backup and rollback, GitHub Actions, Git, Linux, Bash</dd></div>
+                <div><dt>Testing and reliability</dt><dd>Unit testing with mocks, cProfile, runtime logging, preflight validation, secure credential handling, least-privilege token design</dd></div>
+                <div><dt>Data, statistics and ML</dt><dd>Pandas, NumPy, Matplotlib, SQL, scikit-learn, XGBoost, SHAP, PCA and LDA, longitudinal and repeated-measures data, confidence intervals, Wilson score interval, risk ratio and risk difference, Fisher’s exact test, data cleaning and validation</dd></div>
+                <div><dt>Mechanical design and testing</dt><dd>SolidWorks, CAD modelling, 3D printing and rapid prototyping, BOSE ElectroForce testing, cyclic loading and pull-to-failure protocols, experimental design</dd></div>
+                <div><dt>Also</dt><dd>Java for Android, GitHub Copilot, Claude and ChatGPT for code generation, debugging and documentation</dd></div>
+            </dl>
 
-        <a class="resume-button" href="files/resume.pdf" target="_blank">View Resume</a>
-
-        <div class="hero-social">
-            <a href="https://github.com/Amirkhajavirad" target="_blank">
-                <i class="fa-brands fa-github"></i>
-            </a>
-
-            <a href="https://linkedin.com/in/amirkhajavirad" target="_blank">
-                <i class="fa-brands fa-linkedin"></i>
-            </a>
-
-            <a href="mailto:khajavir@ualberta.ca">
-                <i class="fa-solid fa-envelope"></i>
-            </a>
+            <h3 class="path__sub">Certifications</h3>
+            <ul class="path__list">
+                <li>Linux and SQL, Google. March 2026</li>
+                <li>Google Data Analytics Specialization, Google. April 2025</li>
+                <li>Master SolidWorks: Beginner to Advanced, Udemy. March 2026</li>
+            </ul>
+            <p class="path__note">I also volunteered at the Engineering Graduate Research Symposium and the BioAlberta Health and Life Sciences Showcase 2025.</p>
         </div>
+    </div>
+</section>
 
-    </section>
+<!-- ================================ ABOUT ================================ -->
+<section class="about" id="about" aria-labelledby="about-title">
+    <div class="wrap about__grid">
+        <div class="portrait" id="portrait">
+            <div class="portrait__frame">
+                <img class="portrait__plate" src="images/web/portrait-plate.webp" width="720" height="761" alt="" loading="lazy">
+                <div class="portrait__disc" aria-hidden="true"></div>
+                <img class="portrait__cut" src="images/web/portrait-cutout.webp" width="720" height="761" alt="Portrait of Amir Khajavirad" loading="lazy">
+                <video class="portrait__video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"
+                       poster="images/web/amir-intro-first.webp" width="608" height="644">
+                    <source src="images/web/amir-intro.mp4" type="video/mp4">
+                    <source src="images/web/amir-intro.webm" type="video/webm">
+                </video>
+            </div>
+        </div>
+        <div class="about__text">
+            <h2 id="about-title">About</h2>
+            <p>I like the part of engineering that starts after the design review. Sensors drift, wiring works loose and a network drops halfway through a download. My work sits between biomedical research and the machines and software it depends on.</p>
+            <p>My MSc in Biomedical Engineering at the University of Alberta ended with a testing platform for distal biceps tendon fixation. Since November 2025 I have been building and maintaining the Raspberry Pi robots in a rehabilitation research lab, from calibration and touchscreen software to the update pipeline that keeps a growing fleet current.</p>
+            <p>I also work with clinical and experimental data, most recently a longitudinal hematology dataset from a supportive oncology study. Lately I have been reading about humanoid robotics, especially systems that have to cope with uncertainty in real environments.</p>
+        </div>
+    </div>
+</section>
 
+<!-- =============================== CONTACT =============================== -->
+<section class="contact-block" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+        <h2 id="contact-title">Let’s talk about your robots, devices or data.</h2>
+        <p class="contact-block__lead">I’m open to robotics, embedded systems and biomedical engineering roles, and to relocating.</p>
+        <p class="contact-block__mail"><a href="mailto:khajavir@ualberta.ca">khajavir@ualberta.ca</a></p>
+        <ul class="contact-block__links">
+            <li><a href="https://linkedin.com/in/amirkhajavirad" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/Amirkhajavirad" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="files/resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a></li>
+        </ul>
+    </div>
+</section>
 
-<footer class="footer">
+</main>
 
-<div class="footer-container">
-
-<div class="footer-left">
-© 2026 Amirhossein Khajavirad
-</div>
-
-<div class="footer-right">
-
-<a href="https://github.com/Amirkhajavirad" target="_blank">
-<i class="fa-brands fa-github"></i>
-</a>
-
-<a href="https://linkedin.com/in/amirkhajavirad" target="_blank">
-<i class="fa-brands fa-linkedin"></i>
-</a>
-
-<a href="mailto:khajavir@ualberta.ca">
-<i class="fa-solid fa-envelope"></i>
-</a>
-
-</div>
-
-</div>
-
+<footer class="site-footer">
+    <div class="wrap site-footer__row">
+        <p>© 2026 Amir Khajavirad. Edmonton, Alberta.</p>
+        <p><a href="#top">Back to top</a></p>
+    </div>
 </footer>
 
-</div>
+<dialog id="proj-dialog" class="dialog" aria-labelledby="dialog-title">
+    <div class="dialog__inner">
+        <button type="button" class="dialog__close" id="dialog-close" aria-label="Close project details">Close</button>
+        <div id="dialog-content"></div>
+    </div>
+</dialog>
 
+<script src="stage.js" defer></script>
+<script src="site.js" defer></script>
 </body>
 </html>
