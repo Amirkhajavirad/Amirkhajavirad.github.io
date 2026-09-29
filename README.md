@@ -19,7 +19,7 @@ Personal portfolio. Plain HTML, CSS and two small JavaScript files. No build ste
 - Up to 900px wide the stack is pinned in a strip under the header and the text scrolls beneath it.
 - The collage is draggable from 760px up. On smaller screens it becomes a list, and every card still opens its detail dialog.
 
-- The About video loops while it is on screen and pauses when it is not. It does not load until the section is reached, and it is skipped for reduced motion and data-saver mode, where the still portrait stays. The clip is played as is, so there is a visible jump when it restarts. To replace it, encode a new silent clip as `amir-intro.mp4` and `amir-intro.webm` (about 608x644) and update `amir-intro-first.webp`.
+- The About portrait is the video. Its poster (`amir-intro-first.webp`, the first frame) is what shows from the start, so the older still portrait (plate, orange disc and cutout) is never visible when the video can be used. The video loops while on screen and pauses when off screen. It does not load until the section is reached. The still portrait is only the fallback, for reduced motion, data-saver mode or a clip that fails to load. The clip is played as is, so there is a visible jump when it restarts. To replace it, encode a new silent clip as `amir-intro.mp4` and `amir-intro.webm` (about 608x644) and update `amir-intro-first.webp`.
 
 ## Editing
 

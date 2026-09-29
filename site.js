@@ -59,7 +59,7 @@
         }, { passive: true });
     })();
 
-    /* ---------- portrait video: loops while on screen, paused when off screen ---------- */
+    /* ---------- portrait video: the portrait from the first paint, looping while on screen ---------- */
     (function () {
         var portrait = $('portrait');
         if (!portrait || REDUCE) { return; }
@@ -68,9 +68,16 @@
         var conn = navigator.connection;
         if (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ''))) { return; }
 
-        function play() { var p = video.play(); if (p && p.catch) { p.catch(function () { /* autoplay refused: the still portrait stays */ }); } }
-        video.addEventListener('playing', function () { portrait.classList.add('is-video'); });
-        video.addEventListener('error', function () { portrait.classList.remove('is-video'); });
+        // The poster (first frame of the clip) is the portrait until playback starts, so the still layers never show through.
+        portrait.classList.add('video-mode');
+
+        // If the clip cannot be used at all, fall back to the still portrait.
+        function giveUp() { portrait.classList.remove('video-mode'); }
+        video.addEventListener('error', function () { if (video.networkState === 3) { giveUp(); } }, true);
+        function play() {
+            var p = video.play();
+            if (p && p.catch) { p.catch(function (err) { if (err && err.name === 'NotSupportedError') { giveUp(); } }); }
+        }
 
         if ('IntersectionObserver' in window) {
             var io = new IntersectionObserver(function (entries) {
